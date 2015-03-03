@@ -26,7 +26,6 @@ void QuickSort::sort(string* data, int n) {
 void QuickSort::quickSort(string* data, int low, int high) {
 
 	if(low < high) {
-		//Put Pivot in its spot
 		int pivot = partition(data, low, high);
 
 		quickSort(data, low, pivot - 1);
@@ -49,7 +48,6 @@ int QuickSort::partition(string* data, int low, int high) {
 			j++;
 		}
 	}
-	//Move pivot to final spot
 	swap(data[j], data[high]);
 	return j;
 
