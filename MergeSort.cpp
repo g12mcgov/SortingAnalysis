@@ -20,12 +20,12 @@
 void MergeSort::sort(string* data, int n) {
     mergeSort(data,0,n-1);
 
-    cout << "\n\nTesting MergeSort...\n\n";
+    // cout << "\n\nTesting MergeSort...\n\n";
     
-    for(int i = 0; i<n; i++)
-      cout << data[i] << " ";
+    // for(int i = 0; i<n; i++)
+    //   cout << data[i] << " ";
 
-    cout << "\n\n";
+    // cout << "\n\n";
 }
 
 /*
@@ -33,13 +33,13 @@ void MergeSort::sort(string* data, int n) {
 */
 void MergeSort::mergeSort(string* data, int low, int high){
 
-  if(high-low > 1){
+    if(high <= low)
+        return;
 
-    int mid = (high+low)/2;
+    int mid = (high + low)/2;
     mergeSort(data,low,mid);
     mergeSort(data,mid+1,high);
     merge(data,low, mid, high);
-  }
 
 }
 
@@ -47,47 +47,40 @@ void MergeSort::mergeSort(string* data, int low, int high){
 * The main algorithm behind mergeSort.
 * --> see here for details of how it works: http://en.wikipedia.org/wiki/Merge_sort
 */
-void MergeSort::merge(string* data, int low, int mid, int high){
+void MergeSort::merge(string* data, int low, int mid, int high) {
 
-  int left = low;
-  int right = mid + 1;
-  int i = 0;
+    string* helper = new string[high-low+1];
 
-  string* tmp = new string[(high-low)+1];
+    for (int i = low; i <= high; ++i)
+        helper[i-low] = data[i];
 
-  if(high-low == 1) {
+    int i = low;
+    int j = mid + 1;
+    int k = low;
 
-    if(data[high] < data[low])
-      swap(data[high], data[low]);
-
-    return;
-  }
-
-  while(left <= mid && right <= high) {
-    
-    if(data[right] < data[left]) {
-      tmp[i] = data[right];
-      
-      right++;
+    while(i <= mid && j <= high){
+        if (helper[i-low] < helper[j-low]) {
+            data[k] = helper[i-low];
+            i++;
+        }
+        else {
+            data[k] = helper[j-low];
+            j++;
+        }
+        k++;
+    }
+    if (i > mid) {
+        for (; j <= high; ++j) {
+            data[k] = helper[j-low];
+            k++;
+        }
     }
     else {
-      tmp[i] = data[left];
-      
-      left++;
-    }
-    
-    i++;
-  
-  }
-
-  for(; i <= high && left <= mid; i++, left++)
-    tmp[i] = data[left];
-
-  for(; i <= high && right <= high; i++, right++)
-    tmp[i]=data[right];
-
-  for(i = 0, left = low; i < ((high - low) + 1) && low <= high; i++, left++)
-    swap(data[left], tmp[i]);
+        for (; i <= mid; ++i) {
+            data[k] = helper[i-low];
+            k++;
+        }
+    }  
 
 
 }

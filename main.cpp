@@ -27,15 +27,15 @@ int main() {
  
     Experiment experiment(&data);
 
-    // Add the algortithms to the experiment
+    // Add the algortithms to the Experiment
     experiment.addAlgorithm(new SelectionSort());
     experiment.addAlgorithm(new MergeSort());
     experiment.addAlgorithm(new QuickSort());
     
-    experiment.run(5, 5, 2, 1);
-    cout << "New Experiment" << endl;
-    experiment.run(4, 5, 2, 1);
+    experiment.run(2, 10, 10, 500);
 
+    cout << endl << "End Experiment" << endl;
+    //experiment.run(4, 5, 2, 1);
 
     experiment.save("Results.txt");
 }

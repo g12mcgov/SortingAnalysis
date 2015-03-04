@@ -15,12 +15,12 @@
 void QuickSort::sort(string* data, int n) {
     quickSort(data, 0, n-1);
     
-    cout << "\n\nTesting QuickSort...\n\n";
+    // cout << "\n\nTesting QuickSort...\n\n";
     
-    for(int i = 0; i < n; i++)
-      cout << data[i] << " ";
+    // for(int i = 0; i < n; i++)
+    //   cout << data[i] << " ";
 
-    cout << "\n\n";
+    // cout << "\n\n";
 }
 
 void QuickSort::quickSort(string* data, int low, int high) {

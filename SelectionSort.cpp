@@ -27,12 +27,12 @@ void SelectionSort::sort(string* data, int n) {
             swap(data[i], data[min]);
     }
 
-    cout << "\n Testing if sorted...\n\n";
+    // cout << "\n Testing if sorted...\n\n";
     
-    for(int index = 0; index < n; index++)
-    	cout << data[index] << " ";
+    // for(int index = 0; index < n; index++)
+    // 	cout << data[index] << " ";
    	
-   	cout << "\n\n";
+   	// cout << "\n\n";
 }
 
 void SelectionSort::swap(string& s1, string& s2) {
