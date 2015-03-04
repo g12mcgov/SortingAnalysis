@@ -32,9 +32,9 @@ int main() {
     experiment.addAlgorithm(new MergeSort());
     experiment.addAlgorithm(new QuickSort());
     
-    experiment.run(2, 10, 10, 500);
+    experiment.run(1, 10, 10, 500);
 
-    cout << endl << "End Experiment" << endl;
+    cout << endl << "End Experiment" << endl << endl;
     //experiment.run(4, 5, 2, 1);
 
     experiment.save("Results.txt");
