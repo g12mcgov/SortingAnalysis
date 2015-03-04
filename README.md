@@ -18,9 +18,9 @@ To run the program.
 Python Spreadsheet Script
 =======
 
-TO INSTALL DEPENDENCIES
+To install dependencies:
 
-`>> sudo pip install xlsxwriter`
+`$ sudo pip install xlsxwriter`
 
 
 Because xlsx writer can't modify existing spreadsheets, this script merely writes your data into the following format:
@@ -43,4 +43,6 @@ the rest of your results for all lab trials exist.
 
 To run:
 
-	`python csvwriter.py`
+```Python
+	python csvwriter.py
+```
