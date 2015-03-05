@@ -48,38 +48,48 @@ void MergeSort::mergeSort(string* data, int low, int high){
 * --> see here for details of how it works: http://en.wikipedia.org/wiki/Merge_sort
 */
 void MergeSort::merge(string* data, int low, int mid, int high) {
-
-    string* helper = new string[high-low+1];
-
-    for (int i = low; i <= high; ++i)
-        helper[i-low] = data[i];
-
+    
     int i = low;
     int j = mid + 1;
     int k = low;
 
-    while(i <= mid && j <= high){
-        if (helper[i-low] < helper[j-low]) {
-            data[k] = helper[i-low];
+    string* buffer = new string[high-low+1];
+
+    for (int index = low; index <= high; index++)
+        buffer[index - low] = data[index];
+
+    while(i <= mid && j <= high) {
+
+        if (buffer[i - low] < buffer[j - low]) {
+            data[k] = buffer[i - low];
             i++;
         }
         else {
-            data[k] = helper[j-low];
+            data[k] = buffer[j-low];
             j++;
         }
+
         k++;
+
     }
+
     if (i > mid) {
-        for (; j <= high; ++j) {
-            data[k] = helper[j-low];
+
+        while(j <= high) {
+            data[k] = buffer[j-low];
             k++;
+            ++j;
         }
+
     }
     else {
-        for (; i <= mid; ++i) {
-            data[k] = helper[i-low];
+
+        while(i <= mid) {
+            data[k] = buffer[i-low];
             k++;
+            ++i;
         }
+        
     }  
 
 

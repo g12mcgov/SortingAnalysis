@@ -2,8 +2,9 @@
 #	Author: Grant McGovern
 #	Date: 4 March 2015
 # 
-#	Because Pauca should've done this for us...
-#
+#	~ A utility script written in Python that opens the 
+#	~ 'Results.txt' file, reads the data, and loads it into
+#	~ Microsoft Excel.
 #
 
 ## TO INSTALL DEPENDENCIES ##
@@ -50,6 +51,9 @@ def openFile(fileName):
 
 	return lines
 
+
+
+
 def write(lines):
 	workbook = xlsxwriter.Workbook('lab2temp.xlsx')
 	worksheet = workbook.add_worksheet()
@@ -67,17 +71,24 @@ def write(lines):
 		worksheet.write('B'+str(i), line[1])
 		# Column 3 --> Merge Sort 
 		worksheet.write('C'+str(i), line[2])
-		# Column 4 --> Quick Sort 
-		worksheet.write('D'+str(i), line[3])
+		# Column 4 --> Quick Sort (Also remove '\n' character so Excel can read it as a number)
+		worksheet.write('D'+str(i), line[3].rstrip())
 
 		i += 1
 
 if __name__ == "__main__":
-	FILENAME = "Results.txt"
+	try:
+		FILENAME = "Results.txt"
 
-	if (os.path.isfile("lab2temp.xlsx")):
-		os.remove("lab2temp.xlsx")
+		if (os.path.isfile("lab2temp.xlsx")):
+			os.remove("lab2temp.xlsx")
 
-	lines = openFile(FILENAME)
-	write(lines)
+		lines = openFile(FILENAME)
+		write(lines)
+
+		print "Success."
+	
+	except AttributeError as err:
+		print err
+		print "Script could not run"
 
